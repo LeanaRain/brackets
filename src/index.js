@@ -3,7 +3,7 @@ module.exports = function check(str, bracketsConfig) {
   for (let item of str) {
     let matchFound = false; // соответствие найдено - по умолч. фолс.
     //проверкк каждой пары на соответствие
-    for(let[key, value] of bracketsKonfig) {
+    for(let[key, value] of bracketsConfig) {
       if (item === key) {
         stack.push(item); //если это ключ добав его на вершину стека
         matchFound = true;
@@ -15,8 +15,14 @@ module.exports = function check(str, bracketsConfig) {
           return false; // если в стеке не было эл-та или он не равен ключу
         }
         matchFound = true;
+        break;
       }
     }
+    //если ни ключ ни знач-ие не найдены поиск дальше
+    if(!matchFound) {
+      return false;
+    }
   }
-
+  //если стек пуст, то все пары найдены корректно
+return stack.length === 0;
 }
