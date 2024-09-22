@@ -5,7 +5,7 @@ module.exports = function check(str, bracketsConfig) {
     //проверкк каждой пары на соответствие
     for(let[key, value] of bracketsConfig) {
       if (item === key) {
-        //добав. проверка если символы одинаковые
+        // после && добав. проверка если символы одинаковые
         if (key === value && stack[stack.length - 1] === key) {
           stack.pop();
         } else {
